@@ -88,3 +88,35 @@
     5. 불필요한 Collection의 생성을 피한다.
 
    */
+
+ /* 가비지 컬렉션 예제 코드
+  1. 가비지 컬렉션이 제대로 동작하는 코드
+  public static void main(String[] args) throws Exception {
+          List<Integer> li = new ArrayList<>();
+          for (int idx=1; true; idx++) {
+              if (idx % 100 == 0) {
+                li = new ArrayList<>();
+                  Thread.sleep(100);
+              }
+              for(int k = 0; k < 100; k++){
+                  li.add(k);
+              }
+              System.out.println("idx : "+ idx);
+          }
+  }
+
+  2. 메모리 Leak이 발생하는 코드
+  public static void main(String[] args) throws Exception {
+        List<Integer> li = new ArrayList<>();
+        for (int idx=1; true; idx++) {
+            if (idx % 100 == 0) {
+             //   li = new ArrayList<>();
+                Thread.sleep(100);
+            }
+            for(int k = 0; k < 100; k++){
+                li.add(k);
+            }
+            System.out.println("idx : "+ idx);
+        }
+}
+   */
